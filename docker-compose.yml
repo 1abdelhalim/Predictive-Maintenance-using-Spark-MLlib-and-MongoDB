@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb1
+    ports:
+      - "27017:27017"
+    networks:
+      - spark_mongo_network
+    volumes:
+      - ./sensor_data.csv:/data/sensor_data.csv
+      - ./load_data.py:/data/load_data.py
+    command: mongod
+
+  spark:
+    image: bitnami/spark:latest
+    container_name: spark1
+    networks:
+      - spark_mongo_network
+    ports:
+      - "8080:8080"
+      - "4040:4040"
+    volumes:
+      - ./spark_app.py:/opt/bitnami/spark/app/spark_app.py
+      - ./mongo-spark-connector_2.12-10.0.0.jar:/opt/bitnami/spark/jars/mongo-spark-connector_2.12-10.0.0.jar
+
+networks:
+  spark_mongo_network:
+    driver: bridge

@@ -1,0 +1,13 @@
+# Base Spark image from Bitnami
+FROM bitnami/spark:latest
+
+# Add MongoDB Spark Connector
+COPY mongo-spark-connector_2.12-10.0.0.jar /opt/bitnami/spark/jars/
+
+# Copy the Spark application
+COPY spark_app.py /opt/bitnami/spark/app/
+
+WORKDIR /opt/bitnami/spark/app
+
+# Set the default command to run the Spark job
+CMD ["/opt/bitnami/spark/bin/spark-submit", "--master", "local", "spark_app.py"]
