@@ -5,6 +5,7 @@ This project uses Apache Spark and MongoDB to develop a predictive maintenance m
 ## Project Structure
 
 - `spark_app.py`: The Spark application that builds the predictive model.
+- `predictive_maintenance_spark_mlib.ipynb`: Testing the model 
 - `load_data.py`: The script to load sensor data into MongoDB.
 - `sensor_data.csv`: The CSV file containing sensor data.
 - `Dockerfile`: Docker setup for running Spark with MongoDB connector.
