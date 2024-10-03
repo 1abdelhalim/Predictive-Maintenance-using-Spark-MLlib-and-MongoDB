@@ -28,3 +28,8 @@ This project uses Apache Spark and MongoDB to develop a predictive maintenance m
     spark-submit /opt/bitnami/spark/app/spark_app.py
     ```
 
+
+## Model Acuuracy
+![Random Forest](rf.png)
+![Logistic Regression](logistic.png)
+
